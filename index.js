@@ -71,6 +71,41 @@ class MovieAPI {
             id === targetId)
         return targetMovie;
     }
+
+    // 8. A method that prints out movies sorted from bottom rated to top rated.
+    fromBottomtoTop() {
+        let sortedFromBottomToTop = this.movies.sort((a, b) =>
+            (a.rating > b.rating) ? 1 : -1);
+        return sortedFromBottomToTop;
+    }
+
+    // A method that prints out movies sorted from top rated to bottom rated.
+    fromToptoBottom() {
+        let sortedFromToptoBottom = this.movies.sort((a, b) =>
+            (a.rating > b.rating) ? -1 : 1);
+        return sortedFromToptoBottom;
+    }
+
+    // 7. A method that prints out the three top rated movies.
+    topRatedMovies() {
+        const topMovies = this.fromToptoBottom();
+        let topRatedList = [];
+        topRatedList.push(topMovies[0]);
+        topRatedList.push(topMovies[1]);
+        topRatedList.push(topMovies[2]);
+        return topRatedList;
+    }
+
+    // 6. A method that returns the 2 top rated movies and 2 bottom rated movies.
+    getTopAndBottom() {
+        const topMovies = this.fromToptoBottom();
+        let topAndBottomTwoMovies = [];
+        topAndBottomTwoMovies.push(topMovies[0]);
+        topAndBottomTwoMovies.push(topMovies[1]);
+        topAndBottomTwoMovies.push(topMovies[topMovies.length - 1]);
+        topAndBottomTwoMovies.push(topMovies[topMovies.length - 2]);
+        return [topAndBottomTwoMovies];
+    }
 }
 const API = new MovieAPI(moviesJson);
 
@@ -108,3 +143,18 @@ const API = new MovieAPI(moviesJson);
 // Check 10th task ---------------------------------------------------
 // const thatMovie = API.findMovie(12);
 // console.log(thatMovie);
+
+// Check 8th task ---------------------------------------------------
+// const bottomRating = API.fromBottomtoTop();
+// console.log(bottomRating);
+
+// const topRating = API.fromToptoBottom();
+// console.log(topRating);
+
+// Check 7th task ---------------------------------------------------
+// const topThree = API.topRatedMovies();
+// console.log(topThree);
+
+// Check 6th task ---------------------------------------------------
+// const twoAndTwo = API.getTopAndBottom();
+// console.log(twoAndTwo);
